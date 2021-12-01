@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useState, useRef, useEffect } from "react"
+import Modal from "./Modal"
+import SideMenu from "./SideMenu"
 function App() {
+  const [showModal, setShowModal] = useState(false)
+  const [showSideMenu, setShowSideMenu] = useState(false)
+  const sidebarRef = useRef(null)
+  useEffect(() => {
+    if (showSideMenu) {
+      sidebarRef.current.style.left = "0"
+    } else {
+      sidebarRef.current.style.left = "-110%"
+    }
+  }, [showSideMenu])
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+        <div
+          className="menu-button"
+          onClick={() => {
+            setShowSideMenu(true)
+          }}
         >
-          Learn React
-        </a>
+          {/* menu bars */}
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
       </header>
+      <main className="App-main-area">
+        <button
+          className="modal-button"
+          onClick={() => {
+            setShowModal(true)
+          }}
+        >
+          show modal
+        </button>
+        {showModal && <Modal setShowModal={setShowModal} />}
+        <SideMenu reference={sidebarRef} setShowSideMenu={setShowSideMenu} />
+      </main>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

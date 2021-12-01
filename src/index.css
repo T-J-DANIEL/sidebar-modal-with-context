@@ -1,13 +1,95 @@
+
+html{box-sizing:border-box;}
+*,*::before,*::after{box-sizing:inherit;}
 body {
   margin: 0;
+  padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.App{
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template: 15% 85%/15% 85%;
+  grid-template-areas: "header header"
+                       "main main";
+}
+.App *{
+  outline:2px solid red;
+}
+.App-header{
+  grid-area: header;
+  outline:2px solid red;
+}
+.App-main-area{
+  grid-area: main;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  outline:2px solid red;
+}
+.menu-button{
+  width: 3%;
+  height: 30%;
+  margin:3em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.menu-button *{
+  width: 100%;
+  height: 20%;
+  background-color: turquoise;
+  outline:2px solid blue;
+}
+.modal-button{
+  outline: 2px solid green;
+}
+.modal{
+  outline:2px solid red;
+  left: 0;
+  top: 0;
+  position: absolute;
+  z-index: 99;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  background: rgba(54, 53, 53, 0.548);
+  display: grid;
+  place-items: center;
+}
+.inner-modal{
+  background: white;
+  width: 50%;
+  height: 40%;
+ display: grid;
+  justify-items: end;
+  align-items: start;
+}
+.close-modal-button{
+  margin: 2em;
+}
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.side-menu{
+  left: -110%;
+  top: 0;
+  position: absolute;
+  z-index: 2;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  background: white;
+  outline:5px solid yellow;
+  transition: all 0.7s ease;
+}
+
+@media(min-width:900px){
+  .side-menu{
+    width: 30vw;
+  }
 }
