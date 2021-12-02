@@ -1,15 +1,17 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faTimes } from "@fortawesome/free-solid-svg-icons"
 const Modal = ({ setShowModal }) => {
   return (
     <>
       <div className="modal">
         <div className="inner-modal">
           <button
-            className="close-modal-button"
+            className="close-button"
             onClick={() => {
               setShowModal(false)
             }}
           >
-            X
+            <FontAwesomeIcon icon={faTimes} />
           </button>
         </div>
       </div>

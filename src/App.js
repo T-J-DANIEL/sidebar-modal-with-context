@@ -21,7 +21,7 @@ function App() {
             setShowSideMenu(true)
           }}
         >
-          {/* menu bars */}
+          {/* menu button bars */}
           <div></div>
           <div></div>
           <div></div>
