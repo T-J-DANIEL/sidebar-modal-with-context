@@ -47,6 +47,7 @@ body {
   animation-name: rotation;
   animation-duration: 4s;
   animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 @keyframes rotation {
   0% {

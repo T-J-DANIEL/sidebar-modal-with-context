@@ -1,9 +1,10 @@
-import { useState, useRef, useEffect } from "react"
+import { useRef, useEffect, useContext } from "react"
 import Modal from "./Modal"
 import SideMenu from "./SideMenu"
+import {useSideContext} from "./SidebarContext"
 function App() {
-  const [showModal, setShowModal] = useState(false)
-  const [showSideMenu, setShowSideMenu] = useState(false)
+  const { showModal, toggleModal, showSideMenu, toggleSideMenu } =
+    useSideContext()
   const sidebarRef = useRef(null)
   useEffect(() => {
     if (showSideMenu) {
@@ -15,12 +16,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div
-          className="menu-button"
-          onClick={() => {
-            setShowSideMenu(true)
-          }}
-        >
+        <div className="menu-button" onClick={toggleSideMenu}>
           {/* menu button bars */}
           <div></div>
           <div></div>
@@ -28,16 +24,12 @@ function App() {
         </div>
       </header>
       <main className="App-main-area">
-        <button
-          className="modal-button"
-          onClick={() => {
-            setShowModal(true)
-          }}
-        >
+        <button className="modal-button" onClick={toggleModal}>
           show modal
+          {/* {sideContext} */}
         </button>
-        {showModal && <Modal setShowModal={setShowModal} />}
-        <SideMenu reference={sidebarRef} setShowSideMenu={setShowSideMenu} />
+        {showModal && <Modal toggleModal={toggleModal} />}
+          <SideMenu reference={sidebarRef} toggleSideMenu={toggleSideMenu} />
       </main>
     </div>
   )

@@ -1,3 +1,4 @@
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   faTwitter,
@@ -7,16 +8,14 @@ import {
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons"
 import { faTimes } from "@fortawesome/free-solid-svg-icons"
-const SideMenu = ({ reference, setShowSideMenu }) => {
+const SideMenu = ({ reference, toggleSideMenu }) => {
   return (
     <div className="side-menu" ref={reference}>
       <div className="sidemenu-header">
         <h2>Tims Website</h2>
         <button
           className="close-button"
-          onClick={() => {
-            setShowSideMenu(false)
-          }}
+          onClick={toggleSideMenu}
         >
           <FontAwesomeIcon icon={faTimes} />
         </button>
