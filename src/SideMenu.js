@@ -1,4 +1,5 @@
-
+import { useRef, useEffect } from "react"
+import { useSideContext } from "./SidebarContext"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   faTwitter,
@@ -8,15 +9,22 @@ import {
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons"
 import { faTimes } from "@fortawesome/free-solid-svg-icons"
-const SideMenu = ({ reference, toggleSideMenu }) => {
+
+const SideMenu = () => {
+  const { toggleSideMenu, showSideMenu } = useSideContext()
+  const sidebarRef = useRef(null)
+  useEffect(() => {
+    if (showSideMenu) {
+      sidebarRef.current.style.left = "0"
+    } else {
+      sidebarRef.current.style.left = "-110%"
+    }
+  }, [showSideMenu])
   return (
-    <div className="side-menu" ref={reference}>
+    <div className="side-menu" ref={sidebarRef}>
       <div className="sidemenu-header">
         <h2>Tims Website</h2>
-        <button
-          className="close-button"
-          onClick={toggleSideMenu}
-        >
+        <button className="close-button" onClick={toggleSideMenu}>
           <FontAwesomeIcon icon={faTimes} />
         </button>
       </div>
